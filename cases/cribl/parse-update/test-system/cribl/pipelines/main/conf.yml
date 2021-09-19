@@ -1,0 +1,14 @@
+functions:
+  - id: eval
+    filter: "true"
+    disabled: false
+    conf:
+      add:
+        - name: _time
+          value: _time+3600
+      remove: []
+  - id: drop
+    filter: "true"
+    disabled: false
+    conf: {}
+groups: {}

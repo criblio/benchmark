@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  destination:
+    build:
+      context: ../../../common/syslog-destination/
+  test-system:
+    depends_on:
+      - destination
+    ports:
+      - "9000:9000"
+    build:
+      context: test-system
+      args: 
+        TAG: ${CRIBL_VERSION:-latest}
+  source:
+    depends_on:
+      - test-system
+    build:
+      context: ../../../common/syslog-source/
+    volumes:
+      - "../../../data/:/data/"

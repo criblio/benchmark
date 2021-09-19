@@ -1,0 +1,11 @@
+
+[sources.syslog]
+  type = "syslog" # required
+  address = "0.0.0.0:9514" # required, required when mode = "tcp" or mode = "udp"
+  mode = "tcp" # required
+
+
+[sinks.blackhole]
+  type = "blackhole"
+  inputs   = ["syslog"]
+  print_amount = 1000000

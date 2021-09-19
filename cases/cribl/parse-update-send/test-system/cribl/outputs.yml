@@ -1,0 +1,19 @@
+outputs:
+  syslog:
+    systemFields:
+      - cribl_pipe
+    protocol: tcp
+    facility: 1
+    severity: 5
+    appName: Cribl
+    messageFormat: rfc3164
+    timestampFormat: syslog
+    throttleRatePerSec: "0"
+    connectionTimeout: 10000
+    writeTimeout: 60000
+    tls:
+      disabled: true
+    onBackpressure: block
+    type: syslog
+    host: destination
+    port: 9999

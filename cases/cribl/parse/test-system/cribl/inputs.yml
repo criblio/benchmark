@@ -1,0 +1,22 @@
+inputs:
+  CriblLogs:
+    type: cribl
+    disabled: true
+  CriblMetrics:
+    type: criblmetrics
+    disabled: true
+  in_syslog:
+    disabled: false
+    host: 0.0.0.0
+    maxBufferSize: 1000
+    ipWhitelistRegex: /.*/
+    timestampTimezone: local
+    singleMsgUdpPackets: false
+    enableProxyHeader: false
+    keepFieldsList: []
+    tls:
+      disabled: true
+    type: syslog
+    udpPort: 9514
+    tcpPort: 9514
+    pipeline: devnull
