@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  destination:
+    build:
+      context: ../../../common/syslog-destination/
+  source:
+    depends_on:
+      - test-system
+    build:
+      context: ../../../common/syslog-source/
+    volumes:
+      - "../../../data/:/data/"
+  test-system:
+    depends_on:
+      - destination
+    build:
+      context: test-system
+      args: 
+        TAG: ${SPLUNK_VERSION:-latest}
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=splunkp4assw0rd
