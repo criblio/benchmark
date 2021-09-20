@@ -1,17 +1,23 @@
 
 [sources.syslog]
   type = "syslog" # required
-  address = "0.0.0.0:9514" # required, required when mode = "tcp" or mode = "udp"
-  mode = "tcp" # required
+  address = "0.0.0.0:9514"
+  mode = "tcp" 
 
 [transforms.remap]
-  # General
-  type = "remap" # required
-  inputs = ["syslog"] # required
+  type = "remap" 
+  inputs = ["syslog"] 
   source = '''
   .procid,err = .procid + 420
   '''
+
+[transforms.drop]
+  type = "filter"
+  inputs = [ "remap" ]
+  condition = 'false'
+
 [sinks.blackhole]
   type = "blackhole"
-  inputs   = ["remap"]
+  inputs   = ["drop"]
   print_amount = 1000000
+
