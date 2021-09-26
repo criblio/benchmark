@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  destination:
+    build:
+      context: ../../../common/syslog-destination/
+  source:
+    depends_on:
+      - test-system
+    build:
+      context: ../../../common/syslog-source/
+    volumes:
+      - "../../../data/:/data/"
+  test-system:
+    depends_on: 
+      - destination
+    build:
+      context: test-system
+      args: 
+        TAG: ${SYSLOGNG_VERSION:-latest}
