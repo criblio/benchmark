@@ -1,0 +1,16 @@
+DIR,CPU_TIME,MEM_RSS
+syslog-parse/cribl,113.99,334397440
+syslog-parse-update/cribl,126.39,325107712
+syslog-parse-update-send/cribl,312.43,328478720
+syslog-parse/fluentbit,224.23,9977856
+syslog-parse-update/fluentbit,412.16,69623808
+syslog-parse-update-send/fluentbit,731.27,12861440
+syslog-parse/splunk,452.2,229937152
+syslog-parse-update/splunk,447.51,197472256
+syslog-parse-update-send/splunk,596.92,197349376
+syslog-parse/syslog-ng,152.35,1204224
+syslog-parse-update/syslog-ng,177.05,1249280
+syslog-parse-update-send/syslog-ng,317.95,1241088
+syslog-parse/vector,722.02,19333120
+syslog-parse-update/vector,1104.85,21852160
+syslog-parse-update-send/vector,1135.71,20086784
