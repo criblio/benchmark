@@ -24,11 +24,13 @@ VECTOR_VERSION="0.16.1"
 FLUENTBIT_VERSION="1.8.7"
 SPLUNK_VERSION="8.2.2"
 SYSLOGNG_VERSION="3.31.2"
+LOGSTASH_VERSION="7.14.1"
 export CRIBL_VERSION
 export VECTOR_VERSION
 export FLUENTBIT_VERSION
 export SPLUNK_VERSION
 export SYSLOGNG_VERSION
+export LOGSTASH_VERSION
 
 RESULT_DIR="results/$(date +"%Y%m%dT%H%M%S")/"
 RESULT_FILE="${RESULT_DIR}/results.csv"
@@ -39,6 +41,7 @@ echo "LogStream: ${CRIBL_VERSION}"     >> $RESULT_DIR/versions.txt
 echo "Vector: ${VECTOR_VERSION}"       >> $RESULT_DIR/versions.txt
 echo "FluentBit: ${FLUENTBIT_VERSION}" >> $RESULT_DIR/versions.txt
 echo "Splunk: $SPLUNK_VERSION}"        >> $RESULT_DIR/versions.txt
+echo "LogStash: ${LOGSTASH_VERSION}"  >> $RESULT_DIR/versions.txt
 echo "Syslog-ng: ${SYSLOGNG_VERSION}"  >> $RESULT_DIR/versions.txt
 
 
