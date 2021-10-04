@@ -48,8 +48,15 @@ echo "Syslog-ng: ${SYSLOGNG_VERSION}"  >> $RESULT_DIR/versions.txt
 echo "Results path=${RESULT_FILE}"
 echo "DIR,CPU_TIME,MEM_RSS" > $RESULT_FILE
 
+if [ -z "$1" ] 
+then
+   files=$(find cases/ -name docker-compose.yml | sort -t/ -k3,3 -k2,2 )
+else 
+   files=$(find cases/ -name docker-compose.yml | grep $1 | sort -t/ -k3,3 -k2,2 )
+fi
+
 # find and run all the tests, order by the system being tested (smoothen out docker pulls)
-for file in $(find cases/ -name docker-compose.yml | sort -t/ -k3,3 -k2,2 )
+for file in $files
 do
   DIR=$(dirname $file)
   echo -e "\n\nEntering $DIR ..." 1>&2
