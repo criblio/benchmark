@@ -1,0 +1,17 @@
+inputs:
+  CriblLogs:
+    type: cribl
+    disabled: true
+  CriblMetrics:
+    type: criblmetrics
+    disabled: true
+  in_tcp_json:
+    disabled: false
+    host: 0.0.0.0
+    tls:
+      disabled: true
+    ipWhitelistRegex: /.*/
+    enableProxyHeader: false
+    authToken: ""
+    type: tcpjson
+    port: 10070    

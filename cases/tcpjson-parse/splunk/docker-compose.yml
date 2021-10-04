@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  source:
+    depends_on:
+      - test-system
+    build:
+      context: ../../../common/tcpjson-source/
+  test-system:
+    build:
+      context: test-system
+      args: 
+        TAG: ${SPLUNK_VERSION:-latest}
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=splunkp4assw0rd

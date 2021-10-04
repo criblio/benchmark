@@ -1,0 +1,19 @@
+inputs:
+  CriblLogs:
+    type: cribl
+    disabled: true
+  CriblMetrics:
+    type: criblmetrics
+    disabled: true
+  in_splunk_hec:
+    disabled: false
+    host: 0.0.0.0
+    tls:
+      disabled: true
+    splunkHecAPI: /services/collector
+    splunkHecAcks: false
+    staleChannelFlushMs: 10000
+    type: splunk_hec
+    port: 8088
+    authTokensauthTokens:
+      - token: 11111111-2222-3333-4444-555555555555

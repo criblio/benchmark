@@ -1,0 +1,16 @@
+
+[sources.hec]
+ type = "splunk_hec"
+ address = "0.0.0.0:8088"
+ token = "11111111-2222-3333-4444-555555555555"
+ valid_tokens = [ "11111111-2222-3333-4444-555555555555" ]
+
+[transforms.drop]
+  type = "filter"
+  inputs = [ "hec" ]
+  condition = 'false'
+
+[sinks.blackhole]
+  type = "blackhole"
+  inputs   = ["drop"]
+  print_amount = 1000000
