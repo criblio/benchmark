@@ -19,7 +19,7 @@ function run_bench() {
   echo "$CPU_SECS,$MEM_RSS"
 }
 
-CRIBL_VERSION="next"
+CRIBL_VERSION="3.1.3-RC1"
 VECTOR_VERSION="0.16.1"
 FLUENTBIT_VERSION="1.8.7"
 SPLUNK_VERSION="8.2.2"
@@ -44,6 +44,10 @@ echo "Splunk: $SPLUNK_VERSION}"        >> $RESULT_DIR/versions.txt
 echo "LogStash: ${LOGSTASH_VERSION}"  >> $RESULT_DIR/versions.txt
 echo "Syslog-ng: ${SYSLOGNG_VERSION}"  >> $RESULT_DIR/versions.txt
 
+
+cat /proc/cpuinfo > $RESULT_DIR/cpuinfo
+cat /proc/meinfo  > $RESULT_DIR/meminfo
+uname -a          > $RESULT_DIR/uname
 
 echo "Results path=${RESULT_FILE}"
 echo "DIR,CPU_TIME,MEM_RSS" > $RESULT_FILE
