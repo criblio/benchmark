@@ -19,12 +19,12 @@ function run_bench() {
   echo "$CPU_SECS,$MEM_RSS"
 }
 
-CRIBL_VERSION="3.1.3-RC1"
+CRIBL_VERSION="3.2.0-RC10"
 VECTOR_VERSION="0.16.1"
-FLUENTBIT_VERSION="1.8.7"
-SPLUNK_VERSION="8.2.2"
+FLUENTBIT_VERSION="1.8.9"
+SPLUNK_VERSION="8.2.3"
 SYSLOGNG_VERSION="3.31.2"
-LOGSTASH_VERSION="7.14.1"
+LOGSTASH_VERSION="7.14.2"
 export CRIBL_VERSION
 export VECTOR_VERSION
 export FLUENTBIT_VERSION
@@ -40,7 +40,7 @@ mkdir -p $RESULT_DIR
 echo "LogStream: ${CRIBL_VERSION}"     >> $RESULT_DIR/versions.txt
 echo "Vector: ${VECTOR_VERSION}"       >> $RESULT_DIR/versions.txt
 echo "FluentBit: ${FLUENTBIT_VERSION}" >> $RESULT_DIR/versions.txt
-echo "Splunk: $SPLUNK_VERSION}"        >> $RESULT_DIR/versions.txt
+echo "Splunk: ${SPLUNK_VERSION}"        >> $RESULT_DIR/versions.txt
 echo "LogStash: ${LOGSTASH_VERSION}"  >> $RESULT_DIR/versions.txt
 echo "Syslog-ng: ${SYSLOGNG_VERSION}"  >> $RESULT_DIR/versions.txt
 
