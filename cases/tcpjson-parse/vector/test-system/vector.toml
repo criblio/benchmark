@@ -12,4 +12,3 @@
 [sinks.blackhole]
   type = "blackhole"
   inputs   = ["drop"]
-  print_amount = 1000000

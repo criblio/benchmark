@@ -1,0 +1,6 @@
+LogStream: 3.5.0-RC0
+Vector: 0.22.2
+FluentBit: 1.9.5
+Splunk: 9.0.0
+LogStash: 7.14.2
+Syslog-ng: 3.31.2
