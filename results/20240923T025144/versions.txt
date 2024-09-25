@@ -1,0 +1,6 @@
+Stream: 4.8.2
+Vector: 0.41.1
+FluentBit: 3.1.7
+Splunk: 9.3.1
+LogStash: 8.15.1
+Syslog-ng: 4.7.1

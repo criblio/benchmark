@@ -1,0 +1,20 @@
+sources:
+  syslog:
+    type: "syslog"
+    address: "0.0.0.0:9514"
+    mode: "tcp"
+
+transforms:
+  remap:
+    type: "remap"
+    inputs: ["syslog"]
+    source: ".procid,err = .procid + 420"
+  drop:
+    type: "filter"
+    inputs: ["remap"]
+    condition: "false"
+
+sinks:
+  blackhole:
+    type: "blackhole"
+    inputs: ["drop"]

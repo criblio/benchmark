@@ -7,24 +7,24 @@ function clean_bench(){
 
 function run_bench() {
   docker-compose up --build -d 1>&2
-  SRC_CONTAINER=$(docker-compose ps -q source)
+  SRC_CONTAINER=$(docker-compose ps --no-trunc -q source)
 
   echo waiting for source container to exit $SRC_CONTAINER 1>&2
   docker wait $SRC_CONTAINER 1>&2
 
-  TEST_CONTAINER=$(docker-compose ps -q test-system)
-  CPU_SECS=$(cat /sys/fs/cgroup/cpu/docker/$TEST_CONTAINER/cpuacct.stat | awk '{ sum += $2 } END { print sum/100 }')
-  MEM_RSS=$(cat /sys/fs/cgroup/memory/docker/$TEST_CONTAINER/memory.stat | grep '^rss ' | awk '{print $2}')
+  TEST_CONTAINER=$(docker-compose ps --no-trunc -q test-system)
+  CPU_SECS=$(cat /sys/fs/cgroup/system.slice/docker-$TEST_CONTAINER.scope/cpu.stat | grep 'usage_usec' | awk '{print $2}')
+  MEM_USAGE=$(cat /sys/fs/cgroup/system.slice/docker-$TEST_CONTAINER.scope/memory.current)
 
-  echo "$CPU_SECS,$MEM_RSS"
+  echo "$CPU_SECS,$MEM_USAGE"
 }
 
-CRIBL_VERSION="3.5.0-RC0"
-VECTOR_VERSION="0.22.2"
-FLUENTBIT_VERSION="1.9.5"
-SPLUNK_VERSION="9.0.0"
-SYSLOGNG_VERSION="3.31.2"
-LOGSTASH_VERSION="7.14.2"
+CRIBL_VERSION="4.8.2"
+VECTOR_VERSION="0.41.1"
+FLUENTBIT_VERSION="3.1.7"
+SPLUNK_VERSION="9.3.1"
+SYSLOGNG_VERSION="4.7.1"
+LOGSTASH_VERSION="8.15.1"
 export CRIBL_VERSION
 export VECTOR_VERSION
 export FLUENTBIT_VERSION
@@ -37,7 +37,7 @@ RESULT_FILE="${RESULT_DIR}/results.csv"
 mkdir -p $RESULT_DIR
 
 
-echo "LogStream: ${CRIBL_VERSION}"     >> $RESULT_DIR/versions.txt
+echo "Stream: ${CRIBL_VERSION}"     >> $RESULT_DIR/versions.txt
 echo "Vector: ${VECTOR_VERSION}"       >> $RESULT_DIR/versions.txt
 echo "FluentBit: ${FLUENTBIT_VERSION}" >> $RESULT_DIR/versions.txt
 echo "Splunk: ${SPLUNK_VERSION}"        >> $RESULT_DIR/versions.txt

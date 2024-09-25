@@ -1,0 +1,20 @@
+sources:
+  syslog:
+    type: "syslog"
+    address: "0.0.0.0:9514"
+    mode: "tcp"
+
+transforms:
+  remap:
+    type: "remap"
+    inputs: ["syslog"]
+    source: ".procid,err = .procid + 420"
+
+sinks:
+  tcp:
+    type: "socket"
+    inputs: ["remap"]
+    encoding:
+      codec: "json"
+    address: "destination:9999"
+    mode: "tcp"
