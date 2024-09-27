@@ -1,0 +1,16 @@
+sources:
+  tcp:
+    type: "socket"
+    address: "0.0.0.0:10070"
+    mode: "tcp"
+
+transforms:
+  drop:
+    type: "filter"
+    inputs: [ "tcp" ]
+    condition: "false"
+
+sinks:
+  blackhole:
+    type: "blackhole"
+    inputs: ["drop"]

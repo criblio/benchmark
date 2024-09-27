@@ -1,6 +1,6 @@
 ARG TAG=latest
 FROM timberio/vector:${TAG}-debian
 
-ADD vector.toml /etc/vector/vector.toml
-
-
+RUN rm -f /etc/vector/vector.yaml
+COPY vector.yaml /etc/vector/vector.yaml
+COPY vector.toml /etc/vector/vector.toml
