@@ -22,13 +22,13 @@ function run_bench() {
 CRIBL_VERSION="4.8.2"
 VECTOR_VERSION="0.41.1"
 FLUENTBIT_VERSION="3.1.7"
-# SPLUNK_VERSION="9.3.1"
+SPLUNK_VERSION="9.3.1"
 SYSLOGNG_VERSION="4.7.1"
 LOGSTASH_VERSION="8.15.1"
 export CRIBL_VERSION
 export VECTOR_VERSION
 export FLUENTBIT_VERSION
-# export SPLUNK_VERSION
+export SPLUNK_VERSION
 export SYSLOGNG_VERSION
 export LOGSTASH_VERSION
 
@@ -40,7 +40,7 @@ mkdir -p $RESULT_DIR
 echo "Stream: ${CRIBL_VERSION}"     >> $RESULT_DIR/versions.txt
 echo "Vector: ${VECTOR_VERSION}"       >> $RESULT_DIR/versions.txt
 echo "FluentBit: ${FLUENTBIT_VERSION}" >> $RESULT_DIR/versions.txt
-# echo "Splunk: ${SPLUNK_VERSION}"        >> $RESULT_DIR/versions.txt
+echo "Splunk: ${SPLUNK_VERSION}"        >> $RESULT_DIR/versions.txt
 echo "LogStash: ${LOGSTASH_VERSION}"  >> $RESULT_DIR/versions.txt
 echo "Syslog-ng: ${SYSLOGNG_VERSION}"  >> $RESULT_DIR/versions.txt
 
@@ -56,7 +56,7 @@ if [ -z "$1" ]
 then
    files=$(find cases/ -name docker-compose.yml | grep -v splunk | sort -t/ -k3,3 -k2,2 )
 else 
-   files=$(find cases/ -name docker-compose.yml | grep -v splunk | grep $1 | sort -t/ -k3,3 -k2,2 )
+   files=$(find cases/ -name docker-compose.yml | grep $1 | sort -t/ -k3,3 -k2,2 )
 fi
 
 # find and run all the tests, order by the system being tested (smoothen out docker pulls)
