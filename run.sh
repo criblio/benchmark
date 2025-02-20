@@ -54,7 +54,7 @@ echo "DIR,CPU_TIME,MEM_RSS" > $RESULT_FILE
 
 if [ -z "$1" ] 
 then
-   files=$(find cases/ -name docker-compose.yml | sort -t/ -k3,3 -k2,2 )
+   files=$(find cases/ -name docker-compose.yml | grep -v splunk | sort -t/ -k3,3 -k2,2 )
 else 
    files=$(find cases/ -name docker-compose.yml | grep $1 | sort -t/ -k3,3 -k2,2 )
 fi
